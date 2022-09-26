@@ -10,15 +10,14 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from './redux/store';
+import Home from './screens/Home';
 
 // 1) Setup Redux
 
 const App = () => {
   return (
     <Provider store={store}>
-      <View>
-        <Text>Lets Buld </Text>
-      </View>
+      <Home />
     </Provider>
   );
 };
