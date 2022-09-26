@@ -21,7 +21,7 @@ const NavigateCard = () => {
               },
               textInput: {
                 fontSize: 18,
-                backgroundColor: '#DDDDDF',
+                backgroundColor: 'lightgray',
               },
               textInputContainer: {
                 paddingHorizontal: 20,

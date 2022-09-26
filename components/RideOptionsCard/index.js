@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  SafeAreaView,
   View,
 } from 'react-native';
 import React, {useState} from 'react';
@@ -14,7 +15,7 @@ import {useNavigation} from '@react-navigation/native';
 const data = [
   {
     id: 'Uber-X-1',
-    title: 'UberX',
+    title: 'Uber X',
     multiplier: 1,
     image: 'https://links.papareact.com/3pn',
   },
@@ -26,7 +27,7 @@ const data = [
   },
   {
     id: 'Uber-X-3',
-    title: 'UberX',
+    title: 'Uber LUX',
     multiplier: 1.75,
     image: 'https://links.papareact.com/7pf',
   },
@@ -38,7 +39,7 @@ const RideOptionCard = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <View style={tw`bg-white h-full`}>
+    <SafeAreaView style={tw`bg-white h-full`}>
       <TouchableOpacity
         style={tw`absolute top-3 left-5 z-50 p-3 rounded-full`}
         onPress={() => navigation.goBack()}>
@@ -51,7 +52,9 @@ const RideOptionCard = () => {
         renderItem={({item}) => (
           <TouchableOpacity
             onPress={() => setSelected(item)}
-            style={tw`flex-row justify-between items-center px-10`}>
+            style={tw`flex-row justify-between items-center px-10 ${
+              item.id === selected?.id && 'bg-gray-200'
+            }`}>
             <Image
               source={{uri: item.image}}
               style={{width: 100, height: 100, resizeMode: 'contain'}}
@@ -64,7 +67,18 @@ const RideOptionCard = () => {
           </TouchableOpacity>
         )}
       />
-    </View>
+      <View>
+        <TouchableOpacity
+          disabled={!selected}
+          style={tw`bg-black py-3 m-3 rounded-md  ${
+            !selected && 'bg-gray-300'
+          }`}>
+          <Text style={tw`text-center text-xl text-white`}>
+            Choose {selected?.title}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 };
 
