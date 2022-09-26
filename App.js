@@ -6,18 +6,22 @@
  * @flow strict-local
  */
 
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {Text, View} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
 import {store} from './redux/store';
-import Home from './screens/Home';
-
-// 1) Setup Redux
+import Navigation from './navigation';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Home />
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <Navigation />
+        </SafeAreaProvider>
+      </NavigationContainer>
     </Provider>
   );
 };

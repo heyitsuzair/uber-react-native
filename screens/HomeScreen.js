@@ -1,19 +1,14 @@
-import {
-  Dimensions,
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import tw from 'twrnc';
 import NavOptions from '../components/NavOptions';
-const Home = () => {
+import GooglePlacesInput from '../components/GooglePlaces/GooglePlacesInput';
+const Home = ({navigation}) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={tw`bg-white h-full`}>
       <View style={[tw`p-5`, styles.parent]}>
         <Text style={styles.text}>Uber</Text>
+        <GooglePlacesInput />
         <NavOptions />
       </View>
     </SafeAreaView>
