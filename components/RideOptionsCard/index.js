@@ -42,6 +42,8 @@ const RideOptionCard = () => {
 
   const TravelTime = useSelector(selectTravelTime);
 
+  const SURGE_CHARGE_TYPE = 20;
+
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <TouchableOpacity
@@ -67,9 +69,19 @@ const RideOptionCard = () => {
             />
             <View style={tw`-ml-6`}>
               <Text style={tw`font-bold text-black`}>{item.title}</Text>
-              <Text>{TravelTime?.duration.text} Travel Time</Text>
+              <Text>{TravelTime?.duration?.text} Travel Time</Text>
             </View>
-            <Text style={tw`text-xl`}>$90</Text>
+            <Text style={tw`text-xl`}>
+              {new Intl.NumberFormat('en-gb', {
+                style: 'currency',
+                currency: 'PKR',
+              }).format(
+                (TravelTime?.duration.value *
+                  SURGE_CHARGE_TYPE *
+                  item.multiplier) /
+                  100,
+              )}
+            </Text>
           </TouchableOpacity>
         )}
       />
