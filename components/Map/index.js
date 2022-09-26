@@ -36,8 +36,7 @@ const index = () => {
     const getTravelTime = async () => {
       const URL = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destination.description}&origins=${origin.description}&units=imperial&key=${GOOGLE_API_KEY}`;
       await axios.get(URL).then(({data}) => {
-        console.log(data);
-        // dispatch(setTravelTime);
+        dispatch(setTravelTime(data.rows[0].elements[0]));
       });
     };
     getTravelTime();
