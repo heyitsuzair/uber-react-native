@@ -8,7 +8,18 @@ const Home = ({navigation}) => {
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={[tw`p-5`, styles.parent]}>
         <Text style={styles.text}>Uber</Text>
-        <GooglePlacesInput />
+        <GooglePlacesInput
+          placeholder="Where From"
+          screen="home"
+          styles={{
+            container: {
+              flex: 0,
+            },
+            textInput: {
+              fontSize: 18,
+            },
+          }}
+        />
         <NavOptions />
       </View>
     </SafeAreaView>
