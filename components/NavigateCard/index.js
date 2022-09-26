@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import tw from 'twrnc';
 import GooglePlacesInput from '../GooglePlaces/GooglePlacesInput';
+import NavFavourites from '../NavFavourites/NavFavourites';
 
 const NavigateCard = () => {
   return (
@@ -27,6 +28,7 @@ const NavigateCard = () => {
             }}
           />
         </View>
+        <NavFavourites />
       </View>
     </View>
   );

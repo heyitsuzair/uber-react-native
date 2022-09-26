@@ -3,13 +3,14 @@ import React from 'react';
 import tw from 'twrnc';
 import NavOptions from '../components/NavOptions';
 import GooglePlacesInput from '../components/GooglePlaces/GooglePlacesInput';
+import NavFavourites from '../components/NavFavourites/NavFavourites';
 const Home = ({navigation}) => {
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
-      <View style={[tw`p-5`, styles.parent]}>
+      <View style={tw`p-5`}>
         <Text style={styles.text}>Uber</Text>
         <GooglePlacesInput
-          placeholder="Where From"
+          placeholder="Where From?"
           screen="home"
           styles={{
             container: {
@@ -21,6 +22,7 @@ const Home = ({navigation}) => {
           }}
         />
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   );
