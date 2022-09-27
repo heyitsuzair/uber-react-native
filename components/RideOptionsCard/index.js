@@ -7,12 +7,13 @@ import {
   SafeAreaView,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import tw from 'twrnc';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
-import {selectTravelTime} from '../../slices/navSlice';
+import {selectDestination, selectTravelTime} from '../../slices/navSlice';
+import PushNotification from 'react-native-push-notification';
 
 const data = [
   {
@@ -41,8 +42,40 @@ const RideOptionCard = () => {
   const [selected, setSelected] = useState(null);
 
   const TravelTime = useSelector(selectTravelTime);
+  const destination = useSelector(selectDestination);
 
   const SURGE_CHARGE_TYPE = 20;
+
+  const createChannels = () => {
+    PushNotification.createChannel({
+      channelId: 'test-channel',
+      channelName: 'Test Channel',
+    });
+  };
+
+  const handleChoose = () => {
+    PushNotification.cancelAllLocalNotifications();
+    PushNotification.localNotification({
+      channelId: 'test-channel',
+      title: 'Ride Booked!',
+      message: 'Ride To ' + destination.description,
+      bigText: 'Your ' + selected?.title + 'Will Arrive Soon. Get Ready!',
+      color: 'black',
+    });
+    PushNotification.localNotificationSchedule({
+      channelId: 'test-channel',
+      title: '40% Off On Second Ride!',
+      message: 'Get 40% Off On Second Ride!',
+      bigText: 'Book Your Ride Now!',
+      date: new Date(Date.now() + 43200 * 1000),
+      allowWhileIdle: true,
+    });
+    navigation.navigate('HomeScreen');
+  };
+
+  useEffect(() => {
+    createChannels();
+  }, []);
 
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
@@ -87,6 +120,7 @@ const RideOptionCard = () => {
       />
       <View>
         <TouchableOpacity
+          onPress={() => handleChoose()}
           disabled={!selected}
           style={tw`bg-black py-3 m-3 rounded-md  ${
             !selected && 'bg-gray-300'

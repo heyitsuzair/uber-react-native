@@ -24,12 +24,12 @@ const NavOptions = () => {
       image: require('../assets/images/car.jpg'),
       screen: 'MapScreen',
     },
-    {
-      id: '2',
-      title: 'Order Food',
-      image: require('../assets/images/deliver.png'),
-      screen: 'EatScreen',
-    },
+    // {
+    //   id: '2',
+    //   title: 'Order Food',
+    //   image: require('../assets/images/deliver.png'),
+    //   screen: 'EatScreen',
+    // },
   ];
 
   return (

@@ -22,7 +22,7 @@ const Home = ({navigation}) => {
           }}
         />
         <NavOptions />
-        <NavFavourites />
+        {/* <NavFavourites /> */}
       </View>
     </SafeAreaView>
   );
