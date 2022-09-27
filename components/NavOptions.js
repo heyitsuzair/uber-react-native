@@ -21,7 +21,7 @@ const NavOptions = () => {
     {
       id: '1',
       title: 'Get A Ride',
-      image: require('../assets/images/car.jpg'),
+      image: 'https://links.papareact.com/3pn',
       screen: 'MapScreen',
     },
     // {
@@ -45,7 +45,7 @@ const NavOptions = () => {
           <View style={tw`${!origin && 'opacity-20'}`}>
             <Image
               style={{width: 120, height: 120, resizeMode: 'contain'}}
-              source={item.image}
+              source={{uri: item.image}}
             />
             <Text style={tw`mt-2 text-lg font-bold`}>{item.title}</Text>
             <Icon

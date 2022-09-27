@@ -1,4 +1,9 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  StyleSheet,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import tw from 'twrnc';
 import Map from '../components/Map';
@@ -11,7 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 const MapScreen = () => {
   const navigation = useNavigation();
   return (
-    <View>
+    <KeyboardAvoidingView>
       <TouchableOpacity
         onPress={() => navigation.navigate('HomeScreen')}
         style={tw`bg-gray-100 absolute top-16 left-8 p-3 z-50 p-3 rounded-full shadow-lg`}>
@@ -34,7 +39,7 @@ const MapScreen = () => {
           />
         </Stack.Navigator>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

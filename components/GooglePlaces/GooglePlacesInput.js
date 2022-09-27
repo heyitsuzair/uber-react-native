@@ -13,7 +13,7 @@ const GooglePlacesInput = ({styles, placeholder, screen}) => {
     <GooglePlacesAutocomplete
       placeholder={placeholder}
       nearbyPlacesAPI="GooglePlacesSearch"
-      debounce={400}
+      debounce={200}
       styles={styles}
       minLength={2}
       enablePoweredByContainer={false}

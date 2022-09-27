@@ -59,7 +59,7 @@ const RideOptionCard = () => {
       channelId: 'test-channel',
       title: 'Ride Booked!',
       message: 'Ride To ' + destination.description,
-      bigText: 'Your ' + selected?.title + 'Will Arrive Soon. Get Ready!',
+      bigText: 'Your ' + selected?.title + ' Will Arrive Soon. Get Ready!',
       color: 'black',
     });
     PushNotification.localNotificationSchedule({
